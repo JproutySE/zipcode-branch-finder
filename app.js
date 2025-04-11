@@ -60,31 +60,19 @@ const branchData = {
     "37410", "37411", "37412", "37413", "37414", "37415", "37416", "37419", "37421", "37422", "37424", "37450"
   ]
 };
-
-
 function findBranch() {
   const zipcode = document.getElementById("zipcodeInput").value.trim();
-  let branchName = "No branch found for this zipcode.";
+  let matchingBranches = [];
 
   for (const branch in branchData) {
     if (branchData[branch].includes(zipcode)) {
-      branchName = branch;
-      break;
+      matchingBranches.push(branch);
     }
   }
-let matchingBranches = [];
 
-for (const branch in branchData) {
-  if (branchData[branch].includes(zipcode)) {
-    matchingBranches.push(branch);
-  }
-}
+  const result = matchingBranches.length > 0
+    ? `Zip code found in: ${matchingBranches.join(", ")}`
+    : "No branch found for this zip code.";
 
-const result = matchingBranches.length > 0
-  ? `Zip code found in: ${matchingBranches.join(", ")}`
-  : "No branch found for this zip code.";
-
-document.getElementById("result").innerText = result;
-
-  document.getElementById("result").innerText = branchName;
+  document.getElementById("result").innerText = result;
 }
