@@ -72,6 +72,19 @@ function findBranch() {
       break;
     }
   }
+let matchingBranches = [];
+
+for (const branch in branchData) {
+  if (branchData[branch].includes(zipcode)) {
+    matchingBranches.push(branch);
+  }
+}
+
+const result = matchingBranches.length > 0
+  ? `Zip code found in: ${matchingBranches.join(", ")}`
+  : "No branch found for this zip code.";
+
+document.getElementById("result").innerText = result;
 
   document.getElementById("result").innerText = branchName;
 }
