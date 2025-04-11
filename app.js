@@ -63,17 +63,15 @@ const branchData = {
 
 
 function findBranch() {
-  const zipcode = document.getElementById("zipcodeInput").value;
+  const zipcode = document.getElementById("zipcodeInput").value.trim();
   let branchName = "No branch found for this zipcode.";
 
-  // Loop through the branch data to find the matching branch
   for (const branch in branchData) {
-    if (branchData[branch].zipcodes.includes(zipcode)) {
-      branchName = branchData[branch].branch_name;
+    if (branchData[branch].includes(zipcode)) {
+      branchName = branch;
       break;
     }
   }
 
-  // Update the result on the page
   document.getElementById("result").innerText = branchName;
 }
